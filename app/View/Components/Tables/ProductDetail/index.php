@@ -8,6 +8,7 @@ use Illuminate\View\Component;
 
 class index extends Component
 {
+    public $products;
     /**
      * Create a new component instance.
      *
@@ -15,7 +16,7 @@ class index extends Component
      */
     public function __construct()
     {
-        //
+        $this->products = ProductDetail::paginate(10);
     }
 
     /**
@@ -35,7 +36,8 @@ class index extends Component
         })->all();
 
         return view('components.tables.product-detail.index', [
-            'products' => Product::whereIn('id', $filter)->paginate(10)
+            // 'products' => Product::whereIn('id', $filter)->paginate(10),
+            'products' => $this->products
         ]);
     }
 }

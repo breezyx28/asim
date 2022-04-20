@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductDetails\StoreRequest;
 use App\Http\Requests\ProductDetails\UpdateRequest;
 use App\Http\Traits\ResourcesTrait;
+use App\Models\Product;
 use App\Models\ProductDetail;
 use Illuminate\Http\Request;
 
@@ -18,8 +19,18 @@ class ProductsDetailsController extends Controller
      */
     public function index()
     {
+        $productIDs = Product::all()->modelKeys();
+        $productDetails__ProductIDs = ProductDetail::all()->pluck('product_id')->all();
+
+        $filter = collect($productIDs)->filter(function ($value, $key) use ($productDetails__ProductIDs) {
+            if (in_array($value, $productDetails__ProductIDs)) {
+                return $value;
+            }
+        })->all();
+
         return view('pages.product-details.index', [
-            'data' => ProductDetail::all()
+            'data' => ProductDetail::all(),
+            'products' => Product::whereIn('id', $filter)->paginate(10)
         ]);
     }
 

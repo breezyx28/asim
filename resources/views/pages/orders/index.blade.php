@@ -6,5 +6,5 @@
 
 @section('content')
     {{-- <livewire:categories.index /> --}}
-    <x-tables.order.index />
+    <x-tables.order.index :results="$results"/>
 @endsection

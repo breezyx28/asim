@@ -18,7 +18,8 @@ class CheckoutsController extends Controller
     public function index()
     {
         return view('pages.checkouts.index', [
-            'data' => Checkout::all()
+            'data' => Checkout::all(),
+            'results' => Checkout::with('paymentMethod')->paginate(10)
         ]);
     }
 

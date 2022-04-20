@@ -6,5 +6,5 @@
 
 @section('content')
     {{-- <livewire:categories.index /> --}}
-    <x-tables.checkout.index />
+    <x-tables.checkout.index :results="$results"/>
 @endsection

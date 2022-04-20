@@ -7,6 +7,7 @@ use Illuminate\View\Component;
 
 class index extends Component
 {
+    public $results;
     /**
      * Create a new component instance.
      *
@@ -14,7 +15,7 @@ class index extends Component
      */
     public function __construct()
     {
-        //
+        $this->results = Product::with('category')->paginate(10);
     }
 
     /**
@@ -27,7 +28,7 @@ class index extends Component
         return view(
             'components.tables.product.index',
             [
-                'results' => Product::with('category')->paginate(10)
+                'results' => $this->results
             ]
         );
     }

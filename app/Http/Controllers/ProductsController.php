@@ -19,7 +19,8 @@ class ProductsController extends Controller
     public function index()
     {
         return view('pages.products.index', [
-            'data' => \App\Models\Product::all()
+            'data' => \App\Models\Product::all(),
+            'results' => Product::with('category')->paginate(10)
         ]);
     }
 

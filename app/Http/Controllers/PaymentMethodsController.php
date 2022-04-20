@@ -19,7 +19,8 @@ class PaymentMethodsController extends Controller
     public function index()
     {
         return view('pages.payment-methods.index', [
-            'data' => PaymentMethod::all()
+            'data' => PaymentMethod::all(),
+            'results' => PaymentMethod::paginate(10)
         ]);
     }
 

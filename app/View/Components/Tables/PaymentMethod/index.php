@@ -7,6 +7,7 @@ use Illuminate\View\Component;
 
 class index extends Component
 {
+    public $results;
     /**
      * Create a new component instance.
      *
@@ -14,7 +15,7 @@ class index extends Component
      */
     public function __construct()
     {
-        //
+        $this->results = PaymentMethod::paginate(10);
     }
 
     /**
@@ -25,7 +26,7 @@ class index extends Component
     public function render()
     {
         return view('components.tables.payment-method.index', [
-            'results' => PaymentMethod::paginate(10)
+            'results' => $this->results
         ]);
     }
 }

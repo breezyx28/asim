@@ -19,7 +19,8 @@ class CategoriesController extends Controller
     public function index()
     {
         return view('pages.categories.index', [
-            'data' => \App\Models\Category::all()
+            'data' => \App\Models\Category::all(),
+            'results' => Category::paginate(10)
         ]);
     }
 
