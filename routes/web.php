@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProductsDetailsController;
 use App\Http\Controllers\ShoppingController;
 use App\Http\Controllers\UsersController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,26 +26,35 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pages.welcome');
+    return view('pages.welcome', ['products' => Product::limit(8)->get()]);
 });
 
 // auth pages
-Route::get('/login', [LoginController::class, 'login'])->name('loginPage');
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'store'])->name('loginAction');
+Route::post('/register', [LoginController::class, 'storeUser'])->name('storeUser');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [LoginController::class, 'register'])->name('registerPage');
 
 Route::get('/shopping', [ShoppingController::class, 'list']);
 Route::get('/item', [ShoppingController::class, 'item']);
 Route::get('/cart', [ShoppingController::class, 'cart'])->name('cart');
 Route::get('/checkout', [CheckoutController::class, 'payment'])->name('checkout');
+// Route::post('/store-checkout', [CheckoutController::class, 'store'])->name('storeCheckout');
 Route::post('/submit-payment', [CheckoutController::class, 'submitPayment'])->name('submitPayment');
 
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-
-// resources
-Route::resource('products', ProductsController::class);
-Route::resource('users', UsersController::class);
-Route::resource('orders', OrdersController::class);
-Route::resource('categories', CategoriesController::class);
-Route::resource('productDetails', ProductsDetailsController::class);
+// public resource
 Route::resource('checkouts', CheckoutsController::class);
-Route::resource('paymentMethods', PaymentMethodsController::class);
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+
+    // resources
+    Route::resource('products', ProductsController::class);
+    Route::resource('users', UsersController::class);
+    Route::resource('orders', OrdersController::class);
+    Route::resource('categories', CategoriesController::class);
+    Route::resource('productDetails', ProductsDetailsController::class);
+    Route::resource('paymentMethods', PaymentMethodsController::class);
+});

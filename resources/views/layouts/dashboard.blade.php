@@ -446,7 +446,7 @@
                         </button>
 
                         <!-- Brand -->
-                        <a href="#"
+                        <a href="/"
                             class="inline-block text-2xl font-bold tracking-wider text-stone-800 uppercase dark:text-light">
                             {{ env('APP_NAME') }}
                         </a>
@@ -493,7 +493,7 @@
                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600">
                                         الصفة الشخصية
                                     </a>
-                                    <a href="#" role="menuitem"
+                                    <a href="{{ route('logout') }}" role="menuitem"
                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600">
                                         تسجيل خروج
                                     </a>
@@ -536,7 +536,7 @@
                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600">
                                         الصفحة الشخصية
                                     </a>
-                                    <a href="#" role="menuitem"
+                                    <a href="{{ route('logout') }}" role="menuitem"
                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600">
                                         تسجيل الخروج
                                     </a>

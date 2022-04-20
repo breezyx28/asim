@@ -2,19 +2,12 @@
 
 namespace App\View\Components\Tables;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\Component;
 
 class CartItemsTable extends Component
 {
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
+    public $cartProducts = [];
 
     /**
      * Get the view / contents that represent the component.
@@ -23,6 +16,8 @@ class CartItemsTable extends Component
      */
     public function render()
     {
-        return view('components.tables.cart-items-table');
+        $this->cartProducts = \App\Models\Product::find(Session::get('cart'));
+
+        return view('components.tables.cart-items-table', ['items' => $this->cartProducts ?? []]);
     }
 }

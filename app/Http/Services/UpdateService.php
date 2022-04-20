@@ -1,10 +1,11 @@
-<?
+<?php
 
 namespace App\Http\Services;
 
 use Error;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class UpdateService
 {
@@ -29,6 +30,9 @@ class UpdateService
             $model->save();
             return true;
         } catch (\Throwable $th) {
+            Log::alert('error', [
+                'update error' => $th->getMessage()
+            ]);
             return new Error($th->getMessage());
         }
     }

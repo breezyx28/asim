@@ -28,7 +28,7 @@
 
 {{-- <body dir="rtl"> --}}
 
-<body class="min-h-screen relative" dir="rtl">
+<body class="min-h-screen w-full" dir="rtl">
 
     @yield('main')
 
@@ -39,8 +39,16 @@
             made by KAT
         </div>
     </footer>
+
+
     {{-- livewire script --}}
     @livewireScripts
+
+    {{-- global events --}}
+    <script>
+        Livewire.emit('cartButton')
+        // Livewire.emit('cartExtTotal')
+    </script>
 
     @yield('js')
 </body>

@@ -67,7 +67,8 @@ class ProductsDetailsController extends Controller
     {
         return view('pages.product-details.edit', [
             'productDetails' => ProductDetail::with('product')->get(),
-            'products' => \App\Models\Product::all()
+            'products' => \App\Models\Product::all(),
+            'data' => $productDetail
         ]);
     }
 

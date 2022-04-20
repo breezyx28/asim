@@ -66,7 +66,8 @@ class ProductsController extends Controller
     public function edit(Product $product)
     {
         return view('pages.products.edit', [
-            'categories' => \App\Models\Category::all()
+            'categories' => \App\Models\Category::all(),
+            'data' => $product
         ]);
     }
 

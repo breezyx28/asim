@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('order_number');
             $table->bigInteger('quantity');
-            $table->foreignId('user_id')->constrained();
+            // $table->foreignId('user_id')->constrained();
             $table->foreignId('product_id')->constrained();
             $table->timestamps();
         });

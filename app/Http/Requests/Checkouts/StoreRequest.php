@@ -27,6 +27,7 @@ class StoreRequest extends FormRequest
             'order_number' => 'required|numeric',
             'total_price' => 'required|numeric',
             'payment_method_id' => 'required|exists:payment_methods,id',
+            'payment_number' => 'nullable|numeric|digits_between:14,22'
         ];
     }
 
@@ -41,6 +42,9 @@ class StoreRequest extends FormRequest
 
             'payment_method_id.required' => 'طريقة الدفع مطلوبة',
             'payment_method_id.exists' => 'طريقة الدفع غير موجودة في السجلات',
+
+            'payment_number.numeric' => 'رقم الدفع يجب ان يكون رقم',
+            'payment_number.digits_between' => 'رقم الدفع يجب ان يكون بين 14 إلى 22 رقم',
         ];
     }
 }

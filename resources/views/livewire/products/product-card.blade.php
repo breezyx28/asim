@@ -15,7 +15,7 @@
                         title="view">
                         <i class="fas fa-exclamation w-full"></i>
                     </a>
-                    <a href="#"
+                    <a href="#" wire:click.prevent="$emit('cartButton',{{ $items['id'] }})"
                         class="hover:bg-stone-800 hover:text-white hover:rounded border border-stone-400 p-1 text-center font-semibold rounded hover:border-stone-800 w-full">
                         <i class="far fa-shopping-cart w-full"></i>
                     </a>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ShoppingController extends Controller
 {
@@ -21,6 +22,8 @@ class ShoppingController extends Controller
 
     public function cart()
     {
-        return view('pages.shopping.cart');
+        return view('pages.shopping.cart', [
+            'cart' => Session::get('cart') ?? []
+        ]);
     }
 }

@@ -42,7 +42,11 @@ class CheckoutsController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $this->StoreAction($request, new Checkout());
+        try {
+            return $this->StoreAction($request, new Checkout());
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     /**

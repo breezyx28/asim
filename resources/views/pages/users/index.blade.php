@@ -5,5 +5,6 @@
 @endsection
 
 @section('content')
-    <livewire:users.index />
+    {{-- <livewire:users.index /> --}}
+    <x-tables.user.index />
 @endsection

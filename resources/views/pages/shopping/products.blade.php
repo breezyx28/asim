@@ -7,21 +7,21 @@
 @section('main')
     <x-nav.main-nav />
 
-    <div class="main w-full">
-        <div class="px-20 py-10 w-full">
+    <div class="main">
+        <div class="px-4 md:px-20 py-10 w-full">
 
             {{-- search, filter and sort buttons --}}
-            <div class="products-controll flex items-center w-full gap-x-4 mb-4">
+            {{-- <div class="products-controll flex items-center w-full gap-x-4 mb-4">
                 <div class="w-1/4">
                     <x-buttons.dropdown-btn />
                 </div>
                 <div class="w-3/4">
                     <x-buttons.search-btn />
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="products-wrapper flex justify-between gap-x-6 w-full">
-                <div class="flex flex-col h-screen gap-y-4 w-1/4">
+            <div class="products-wrapper flex md:flex-row flex-col justify-between gap-x-6 w-full">
+                <div class="flex flex-col md:h-screen h-auto gap-y-4 w-full md:w-1/4">
                     <div class="flex flex-col py-4 gap-y-2 border-b border-stone-800">
                         <div class="head text-2xl font-bold text-stone-800 uppercase">
                             brand

@@ -5,6 +5,7 @@ namespace App\Http\Services;
 use Error;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\File;
 
 class StoreService
@@ -30,6 +31,9 @@ class StoreService
             $model->save();
             return true;
         } catch (\Throwable $th) {
+            Log::alert('error', [
+                'Store error' => $th->getMessage()
+            ]);
             return new Error($th->getMessage());
         }
     }

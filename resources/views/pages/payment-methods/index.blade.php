@@ -5,5 +5,6 @@
 @endsection
 
 @section('content')
-    <livewire:categories.index />
+    {{-- <livewire:categories.index /> --}}
+    <x-tables.payment-method.index />
 @endsection

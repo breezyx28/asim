@@ -64,7 +64,7 @@ class PaymentMethodsController extends Controller
     public function edit(PaymentMethod $paymentMethod)
     {
         return view('pages.payment-methods.edit', [
-            'paymentMethods' => $paymentMethod
+            'data' => $paymentMethod
         ]);
     }
 

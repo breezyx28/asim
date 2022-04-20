@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Nav;
 
+use App\Http\Services\BasketService;
 use Illuminate\View\Component;
 
 class MainNav extends Component

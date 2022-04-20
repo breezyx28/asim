@@ -6,6 +6,7 @@ use App\Http\Services\StoreService;
 use App\Http\Services\UpdateService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 trait ResourcesTrait
 {
@@ -16,7 +17,6 @@ trait ResourcesTrait
             new StoreService($request, $model);
             return back()->with('success', 'تم بنجاح');
         } catch (\Throwable $th) {
-            dd($th->getMessage());
             return back()->with('error', $th->getMessage());
         }
     }
@@ -24,10 +24,12 @@ trait ResourcesTrait
     public function UpdateAction(Request $request, Model $model)
     {
         try {
-            //code...
             new UpdateService($request, $model);
             return back()->with('success', 'تم بنجاح');
         } catch (\Throwable $th) {
+            Log::alert('error', [
+                'update error' => $th->getMessage()
+            ]);
             return back()->with('error', $th->getMessage());
         }
     }

@@ -20,23 +20,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                <div class="product-img flex justify-center">
-                                    <img src="{{ asset('assets/products/splash_img.png') }}"
-                                        class="md:w-20 lg:w-28 w-16" alt="">
-                                </div>
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 relative">
-                                <livewire:quantity-controll />
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Otto
-                            </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                @mdo
-                            </td>
-                        </tr>
+                        @forelse ($items as $item)
+                            <livewire:tables.cart-items-tr :item="$item"/>
+                        @empty
+                            <tr class="bg-gray-100">
+                                <td colspan="4" class="text-center text-sm text-gray-400 px-6 py-14 whitespace-nowrap">
+                                    السلة فارغة</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

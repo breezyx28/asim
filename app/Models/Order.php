@@ -10,6 +10,8 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['order_number', 'quantity', 'product_id'];
+
     /**
      * Get the user that owns the Order
      *

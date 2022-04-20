@@ -28,7 +28,7 @@ class UpdateRequest extends FormRequest
             'username' => ['nullable', 'string', 'max:255', 'unique:users'],
             'email' => ['nullable', 'string', 'email', 'max:191', 'unique:users'],
             'password' => ['nullable', 'min:4'],
-            'address' => ['string', 'max:191'],
+            'address' => ['nullable', 'string', 'max:191'],
         ];
     }
 

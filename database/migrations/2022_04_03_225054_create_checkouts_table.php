@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('checkouts', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('order_number');
+            $table->bigInteger('payment_number');
             $table->decimal('total_price', 14);
-            $table->string('payment_method_id');
+            $table->foreignId('payment_method_id')->constrained();
             $table->timestamps();
         });
     }

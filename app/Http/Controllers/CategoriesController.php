@@ -77,7 +77,7 @@ class CategoriesController extends Controller
      */
     public function update(UpdateRequest $request, Category $category)
     {
-        $this->UpdateAction($request, $category);
+        return $this->UpdateAction($request, $category);
     }
 
     /**
